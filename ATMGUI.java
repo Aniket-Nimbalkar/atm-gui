@@ -131,6 +131,13 @@ class ATM extends JFrame implements ActionListener {
     }
 
     private void showLoginPanel() {
+        // Clear user ID and PIN fields
+        userIDField.setText("");
+        pinField.setText("");
+
+        // Set focus to the user ID field for convenience
+        userIDField.requestFocusInWindow();
+
         remove(menuPanel);
         add(loginPanel);
         revalidate();
@@ -207,6 +214,8 @@ class ATM extends JFrame implements ActionListener {
             System.out.println("Error loading user data: " + e.getMessage());
         }
     }
+
+
 
     private void saveUserData() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(DATA_FILE))) {
